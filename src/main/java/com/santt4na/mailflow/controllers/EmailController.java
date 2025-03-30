@@ -26,5 +26,10 @@ public class EmailController {
   public void sendEmail(@RequestBody EmailDto emailDto) {
     emailService.sendEmail(emailDto);
   }
-
+  
+  @PostMapping("/sendHtml")
+  @ResponseStatus(HttpStatus.CREATED)
+  public void sendEmailHtml(@RequestBody EmailDto emailDto) {
+    emailService.sendEmailHtml(emailDto);
+  }
 }
