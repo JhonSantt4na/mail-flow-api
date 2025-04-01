@@ -63,6 +63,15 @@ MAIL_USERNAME=seu_username
 MAIL_PASSWORD=sua_senha
 MAIL_FROM=noreply@mailflow.dev
 ```
+## Variáveis de Ambiente
+
+| Variável             | Exemplo               | Obrigatório |
+|----------------------|-----------------------|-------------|
+| MAIL_FROM            | noreply@mailflow.dev  | Sim         |
+| SPRING_MAIL_PASSWORD | sua-senha-secreta     | Sim         |
+| SPRING_MAIL_HOST     | smtp.dominio.com      | Sim         |
+| SPRING_MAIL_PORT     | 587                   | Sim         |
+
 
 ### 3. **Executar com Docker**
 
@@ -71,6 +80,11 @@ docker-compose up --build
 ```
 
 _A API estará em `http://localhost:8080`._
+
+_Verificar funcionamento:
+
+curl http://localhost:8080/actuator/health
+# Deve retornar {"status":"UP"}
 
 ---
 
