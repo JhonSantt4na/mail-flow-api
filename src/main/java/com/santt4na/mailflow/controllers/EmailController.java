@@ -1,5 +1,6 @@
 package com.santt4na.mailflow.controllers;
 
+import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
 
 import com.santt4na.mailflow.dtos.EmailDto;
@@ -20,19 +21,19 @@ public class EmailController {
 
   @PostMapping("/sendEmail")
   @ResponseStatus(HttpStatus.CREATED)
-  public void sendEmail(@RequestBody EmailDto emailDto) {
+  public void sendEmail(@RequestBody @Valid EmailDto emailDto) {
     emailService.sendEmail(emailDto);
   }
   
   @PostMapping("/sendHtml")
   @ResponseStatus(HttpStatus.CREATED)
-  public void sendEmailHtml(@RequestBody EmailDto emailDto) {
+  public void sendEmailHtml(@RequestBody @Valid EmailDto emailDto) {
     emailService.sendEmailHtml(emailDto);
   }
   
   @PostMapping("/sendEmailAnexo")
   @ResponseStatus(HttpStatus.CREATED)
-  public void sendEmailAnexo(@RequestPart EmailDto emailDto,
+  public void sendEmailAnexo(@RequestPart @Valid EmailDto emailDto,
                              @RequestParam(value = "anexo", required = false) MultipartFile anexo) {
     emailService.sendEmailWithAttachment(emailDto, anexo);
   }
